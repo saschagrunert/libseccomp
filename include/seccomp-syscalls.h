@@ -275,6 +275,7 @@
 #define __PNR_ppoll				-10241
 #define __PNR_renameat				-10242
 #define __PNR_riscv_flush_icache		-10243
+#define __PNR_close_range			-10244
 
 /*
  * libseccomp syscall definitions
@@ -475,6 +476,12 @@
 #endif
 
 #define __SNR_close			__NR_close
+
+#ifdef __NR_close_range
+#define __SNR_close_range		__NR_close_range
+#else
+#define __SNR_close_range		__PNR_close_range
+#endif
 
 #ifdef __NR_connect
 #define __SNR_connect			__NR_connect
